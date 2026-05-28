@@ -1,0 +1,6 @@
+*.pdf
+gerar_banco.py
+conteudo_pdfs.txt
+banco_questoes.html
+__pycache__/
+*.pyc
