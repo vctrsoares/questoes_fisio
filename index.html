@@ -121,7 +121,7 @@
   .tag.fonte { background: #f0fdf4; color: #166534; }
 
   .q-num { font-size: .8rem; color: var(--neutral); margin-bottom: 6px; }
-  .q-text { font-size: .97rem; line-height: 1.7; margin-bottom: 24px; white-space: pre-wrap; }
+  .q-text { font-size: .97rem; line-height: 1.7; margin-bottom: 24px; }
 
   .options { display: flex; flex-direction: column; gap: 10px; }
   .option {
@@ -334,7 +334,7 @@ function renderQuestion() {
     return `
       <button class="${cls}" onclick="escolher('${q.id}', '${letra}')" ${respondida ? 'disabled' : ''}>
         <span class="letter">${letra}</span>
-        <span>${q.alternativas[letra]}</span>
+        <span>${norm(q.alternativas[letra])}</span>
       </button>`;
   }).join('');
 
@@ -348,7 +348,7 @@ function renderQuestion() {
         <span class="tag fonte">${q.fonte}</span>
       </div>
       <div class="q-num">Questão ${idx + 1} de ${filtradas.length} &nbsp;|&nbsp; Nº ${q.numero}</div>
-      <div class="q-text">${escHtml(q.enunciado)}</div>
+      <div class="q-text">${norm(q.enunciado)}</div>
       <div class="options">${opcoesHTML}</div>
 
       <div class="gabarito-info ${gabVisible}" id="gabInfo">
@@ -443,6 +443,10 @@ function updateProgress() {
 
 function escHtml(t) {
   return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function norm(t) {
+  // Colapsa quebras de linha do PDF (artefatos de coluna) em espaços
+  return escHtml(t.replace(/\n+/g,' ').replace(/ {2,}/g,' ').trim());
 }
 
 boot();
