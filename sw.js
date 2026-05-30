@@ -1,5 +1,9 @@
-const CACHE = 'fisio-quiz-v3';
-const FILES = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
+const CACHE = 'fisio-quiz-v4';
+const FILES = [
+  './', './index.html', './manifest.json', './icon-192.png', './icon-512.png',
+  './imgs/ENR_AOCP_q4.png', './imgs/ENR_AOCP_q20.png',
+  './imgs/UNICAMP2025_q4.png', './imgs/UNICAMP2025_p5_left.png',
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
