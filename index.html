@@ -461,6 +461,15 @@ boot();
 </script>
 <script>
 if ('serviceWorker' in navigator) {
+  // Recarrega automaticamente quando o novo Service Worker assume o controle
+  // (evita ficar preso na versão antiga do cache após um deploy)
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
+  });
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
 }
 </script>

@@ -1,4 +1,4 @@
-const CACHE = 'fisio-quiz-v4';
+const CACHE = 'fisio-quiz-v5';
 const FILES = [
   './', './index.html', './manifest.json', './icon-192.png', './icon-512.png',
   './imgs/ENR_AOCP_q4.png', './imgs/ENR_AOCP_q20.png',
