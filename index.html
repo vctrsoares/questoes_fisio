@@ -585,7 +585,7 @@ function renderFilterGroup(containerId, counts, tipo) {
 }
 
 function aplicarFiltros() {
-  if (modoSimulado) { alert('Finalize o simulado antes de mudar os filtros.'); return; }
+  if (modoSimulado) return;   // filtros bloqueados durante simulado (sem popup)
   modoRevisao = false;
   filtradas = todas.filter(q => {
     if (filtroArea  && q.area  !== filtroArea)  return false;
@@ -668,7 +668,6 @@ function escolher(qid, letra) {
     simRespostas[qid] = { escolha: letra, acertou: letra === q.gabarito };
     renderQuestion();
     updateStats();
-    if (idx < filtradas.length - 1) setTimeout(() => navegar(1), 400);
   } else {
     if (respostas[qid]) return;
     if (q.gabarito) {
@@ -709,7 +708,7 @@ function resetar() {
 }
 
 function filtrarErros() {
-  if (modoSimulado) { alert('Finalize o simulado antes.'); return; }
+  if (modoSimulado) return;
   modoErros = true; aplicarFiltros();
 }
 
