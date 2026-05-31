@@ -522,12 +522,22 @@ function encerrarSimulado(porTempo) {
     '</div>' +
     '<p class="res-subtitulo">Por prova:</p>' + linhas +
     '<div class="res-btns">' +
-      (erradas.length ? '<button class="btn btn-outline" onclick="verErros()">❌ Ver erros</button>' : '') +
+      '<button class="btn btn-outline" onclick="verTodasSimulado()">📋 Ver todas</button>' +
+      (erradas.length ? '<button class="btn btn-outline" onclick="verErros()" style="color:var(--wrong);border-color:var(--wrong)">❌ Só erros</button>' : '') +
       '<button class="btn btn-primary" onclick="fecharResultado()">✓ Fechar</button>' +
     '</div>';
 
   document.getElementById('overlayResultado').classList.add('open');
   buildFilters();
+  renderQuestion();
+  updateStats();
+}
+
+function verTodasSimulado() {
+  fecharOverlay('overlayResultado');
+  modoRevisao = true;
+  filtradas   = [...simQuestoes];   // todas as questões do simulado com gabarito revelado
+  idx = 0;
   renderQuestion();
   updateStats();
 }
