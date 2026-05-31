@@ -202,6 +202,9 @@
   }
   .user-chip:hover { background: rgba(255,255,255,.28); }
 
+  /* durante simulado: esconde filtros de área/fonte */
+  #panelArea.oculto, #panelFonte.oculto { display: none; }
+
   /* ── simulado setup panel ── */
   .sim-fonte-list { max-height: 160px; overflow-y: auto; margin: 6px 0 10px; }
   .sim-fonte-row {
@@ -281,12 +284,12 @@
   <!-- sidebar -->
   <aside class="sidebar">
 
-    <div class="panel">
+    <div class="panel" id="panelArea">
       <h3>Área</h3>
       <div id="areaFilters"></div>
     </div>
 
-    <div class="panel">
+    <div class="panel" id="panelFonte">
       <h3>Fonte</h3>
       <div id="fonteFilters"></div>
     </div>
@@ -453,6 +456,8 @@ function iniciarSimulado() {
 
   document.getElementById('timerChip').style.display = 'flex';
   document.getElementById('btnFinalizar').style.display = '';
+  document.getElementById('panelArea').classList.add('oculto');
+  document.getElementById('panelFonte').classList.add('oculto');
   atualizarTimer();
   simTimer = setInterval(() => {
     simTempoRestante--;
@@ -484,6 +489,8 @@ function encerrarSimulado(porTempo) {
   modoSimulado = false;
   document.getElementById('timerChip').style.display = 'none';
   document.getElementById('btnFinalizar').style.display = 'none';
+  document.getElementById('panelArea').classList.remove('oculto');
+  document.getElementById('panelFonte').classList.remove('oculto');
 
   const certas     = simQuestoes.filter(q => simRespostas[q.id] && simRespostas[q.id].acertou === true);
   const erradas    = simQuestoes.filter(q => simRespostas[q.id] && simRespostas[q.id].acertou === false);
