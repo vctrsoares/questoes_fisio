@@ -462,6 +462,7 @@ function norm(t) {
   s = s.replace(/\n+(?=\( \))/g,        '<br>');   // itens V/F:       ( ) texto
   s = s.replace(/\n+(?=\(\d+\))/g,      '<br>');   // itens numerados: (1) texto
   s = s.replace(/\n+(?=[IVX]{1,5}\s*[–\-] )/g, '<br>'); // itens romanos: I – texto
+  s = s.replace(/\n+(?=A alternativa )/g, '<br><br>'); // conclusão após lista ( )
   // Colapsa as demais quebras (artefatos de layout do PDF)
   s = s.replace(/\n+/g, ' ').replace(/ {2,}/g, ' ');
   return s.trim();
