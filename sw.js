@@ -10,6 +10,9 @@ const STATIC = [
   './imgs/UNICAMP2025_q4.png',
   './imgs/UNICAMP2025_p5_left.png',
   './imgs/2016_q43.png',
+  './imgs/2019_q33.png',
+  './imgs/2019_q45.png',
+  './imgs/2019_q50.png',
 ];
 
 self.addEventListener('install', e => {
