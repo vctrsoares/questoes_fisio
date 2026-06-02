@@ -837,7 +837,8 @@ function norm(t) {
   let s = escHtml(t);
   s = s.replace(/\n+(?=\( \))/g,              '<br>');
   s = s.replace(/\n+(?=\(\d+\))/g,            '<br>');
-  s = s.replace(/\n+(?=[IVX]{1,5}\s*[–\-] )/g,'<br>');
+  s = s.replace(/\n+(?=[IVX]{1,5}\s*[–\-] )/g,'<br>'); // itens romanos: I – texto
+  s = s.replace(/\n+(?=[IVX]{1,5}\.\s)/g,     '<br>'); // itens romanos: I. texto
   s = s.replace(/\n+(?=A alternativa )/g,     '<br><br>');
   s = s.replace(/\n+/g, ' ').replace(/ {2,}/g, ' ');
   return s.trim();
