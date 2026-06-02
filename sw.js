@@ -1,4 +1,4 @@
-const CACHE = 'fisio-quiz-v7';
+const CACHE = 'fisio-quiz-v8';
 
 // Assets estáticos pré-cacheados (não mudam com frequência)
 const STATIC = [
@@ -9,6 +9,7 @@ const STATIC = [
   './imgs/ENR_AOCP_q20.png',
   './imgs/UNICAMP2025_q4.png',
   './imgs/UNICAMP2025_p5_left.png',
+  './imgs/2020_q24.png',
   './imgs/2015_q1.png',
   './imgs/2015_q3.png',
   './imgs/2016_q43.png',
